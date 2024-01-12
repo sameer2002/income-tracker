@@ -67,32 +67,57 @@ document.addEventListener('DOMContentLoaded', function () {
     
 
     function addEventListenersForDragging(marker, handleMove, updateFunction) {
-        marker.addEventListener('mousedown', function (event) {
+        marker.addEventListener('mousedown', handleMouseDown);
+        marker.addEventListener('touchstart', handleTouchStart);
+    
+        function handleMouseDown(event) {
             isDraggingPercentage = false;
             isDraggingAge = false;
             updateFunction(event.clientX);
             document.addEventListener('mousemove', handleMove);
-            document.addEventListener('mouseup', function () {
-                document.removeEventListener('mousemove', handleMove);
-            });
-        });
+            document.addEventListener('mouseup', handleMouseUp);
+        }
+    
+        function handleMouseUp() {
+            document.removeEventListener('mousemove', handleMove);
+            document.removeEventListener('mouseup', handleMouseUp);
+        }
+    
+        function handleTouchStart(event) {
+            isDraggingPercentage = false;
+            isDraggingAge = false;
+            const touch = event.touches[0];
+            updateFunction(touch.clientX);
+            document.addEventListener('touchmove', handleTouchMove);
+            document.addEventListener('touchend', handleTouchEnd);
+        }
+    
+        function handleTouchMove(event) {
+            const touch = event.touches[0];
+            updateFunction(touch.clientX);
+        }
+    
+        function handleTouchEnd() {
+            document.removeEventListener('touchmove', handleTouchMove);
+            document.removeEventListener('touchend', handleTouchEnd);
+        }
     }
-
+    
     addEventListenersForDragging(
         percentageMarker,
         handlePercentageMouseMove,
         updatePercentage
     );
     addEventListenersForDragging(ageMarker, handleAgeMouseMove, updateAge);
-
+    
     function handlePercentageMouseMove(event) {
         updatePercentage(event.clientX);
     }
-
+    
     function handleAgeMouseMove(event) {
         updateAge(event.clientX);
     }
-
+    
     function updatePercentage(x) {
         const lineRect = percentageLine.getBoundingClientRect();
         const percentage = Math.min(100, Math.max(0, ((x - lineRect.left) / lineRect.width) * 100));
@@ -101,7 +126,7 @@ document.addEventListener('DOMContentLoaded', function () {
         percentageLine.style.background = `linear-gradient(to right, ${color} ${percentage}%, #fff ${percentage}%)`;
         percentageDisplay.textContent = `${Math.round(percentage)}%`;
     }
-
+    
     function updateAge(x) {
         const lineRect = ageLine.getBoundingClientRect();
         const selectedAgePercentage = Math.min(100, Math.max(0, ((x - lineRect.left) / lineRect.width) * 100));
