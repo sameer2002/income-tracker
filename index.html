@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="circle.css">
+</head>
+<body>
+    <div class="nav">
+        <div class="nav-div1 navup">
+            <a href="#"> <img style="width: 100%;"  src="./images/Screenshot 2024-01-11 164003.png" alt=""></a>
+            <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+        </div>
+        <div class="nav-div1 navcenter">
+            <a class="nav-btn active"  href="index.html"><i class="fa-solid fa-house"></i></a>
+            <a class="nav-btn"  href="#"><i class="fa-regular fa-newspaper"></i></a>
+            <a class="nav-btn"  href="#"><i class="fa-regular fa-rectangle-list"></i></a>
+            <a class="nav-btn"  href="#"><i class="fa-regular fa-user"></i></a>
+        </div>
+       <div class="nav-div1 navdown">
+            <a href="#"><i class="fa-regular fa-bell"></i></a>
+            <a href="#"><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
+       </div>
+
+    </div>
+    <div class="mobile-nav" id="mobileNav">
+        <a class="nav-btn active"  href="index.html"><i class="fa-solid fa-house"></i></a>
+        <a class="nav-btn"  href="#"><i class="fa-regular fa-newspaper"></i></a>
+        <a class="nav-btn"  href="#"><i class="fa-regular fa-rectangle-list"></i></a>
+        <a class="nav-btn"  href="#"><i class="fa-regular fa-user"></i></a>
+        <a href="#" class="nav-btn"><i class="fa-solid fa-magnifying-glass"></i></a>
+        
+    </div>
+
+    
+    <div class="top-nav" id="topNav">
+       
+        <a href="#" class="bell-icon"><i class="fa-regular fa-bell"></i></a>
+        </div>
+       
+    <div class="container">
+        <div class="box1">
+           <div class="user">
+               <img style="width: 18%; border-radius: 50px;" src="./images/boy-cartoon-face-free-vector.jpg" alt="">
+              <div class="user-det">
+                    <h2>Hi Mike,</h2>
+                    <p>Welcome back</p>
+              </div>
+           </div>
+           <div class="account">
+                <h3>Today</h3>
+                <div class="account-m">
+                    <div class="acount-b acc">
+                        <h2>$19,892</h2>
+                        <p>Acount Balance</p>
+                    </div>
+                    <div class="counti acc">
+                       <h3>$4,000</h3>
+                       <p>Year-to-Date Contribution</p>
+                    </div>
+                    <div class="total acc">
+                        <h3>$1,892</h3>
+                        <p>Total Interest</p>
+                    </div>
+                </div>
+               
+               <button class="btn" style="margin-top: 20px;">I want to <i class="fa-solid fa-angle-down"></i></button>
+           </div>
+            <ul class="transactions">
+                <h3>Recent Transactions</h3>
+                <li>
+                    <span>2020-08-07</span>
+                    <p>Withdraw Transfer to Banck-XXX11</p>
+                </li>
+                <hr>
+                <li>
+                    <span>2020-07-21</span>
+                    <p>Withdraw Transfer to Banck-XXX11</p>
+                </li>
+                <hr>
+                <li>
+                    <span>2020-07-15</span>
+                    <p>Withdraw Transfer to Banck-XXX11</p>
+                </li>
+                <hr>
+            </ul>
+        </div>
+       
+       <div class="box2">
+            <div class="boxa">
+                 <div class="ret-inc">
+                    <div class="head">
+                        <p>Retirement Income</p>
+                        <h2>Starting Year 2056</h2>
+                    </div>
+                    <div class="goals-det">
+                         <div class="goal-div big-m">
+                            <h3>$300,000</h3>
+                            <p>My Goal</p>
+                            <hr style="border-top: 2px solid #4935ff; ">
+                         </div>
+                         <div class="goal-div">
+                            <h3>59%</h3>
+                            <p>Goal Achieved</p>
+                            <hr style="border-top: 2px solid #4935ff; ">
+                         </div>
+                         <div class="goal-div">
+                            <h3>$300</h3>
+                            <p>Est. Monthly Income</p>
+                            <hr style="border-top: 2px solid #4935ff; ">
+                         </div>
+                    </div>
+                 </div>
+                 <div class="counti-graph">
+                    <h3>Contribution Overtime</h3>
+                    <div class="graph-container">
+                        <canvas width="500px" id="contributionChart"></canvas>
+                    </div>
+                 </div>
+                 <div class="peers">
+                    <h3>How do I compare to my peers?</h3>
+                    <p>These numbers represent current goal achievement</p>
+                    <div class="peers-det">
+                        <div class="peers-details">
+                            <label for="Dropdown">Age:</label>
+                            <select id="Dropdown">
+
+                                <option value="30">Under 30</option>
+                                <option value="40">under 40</option>
+                                <option value="50">under 50</option>
+                            </select>
+                            <hr>
+                            <label for="Dropdown">Salary:</label>
+                            <select id="Dropdown">
+                                <option value="5">k 20-k 30</option>
+                                <option value="3">k 20-k 30</option>
+                                <option value="4">k 20-k 30</option>
+                                <option value="5">k 20-k 30</option>
+                            </select>
+                            <hr>
+                            <label for="Dropdown">Gender:</label>
+                            <select id="Dropdown">
+                                <option value="2">Male</option>
+                                <option value="3">Female</option>
+                            </select>
+                            
+                        </div>
+                        <div class="peers-rep">
+                            <div class="c100 p78 small">
+                                <span>78%</span>
+                                <div class="slice">
+                                    <div class="bar"></div>
+                                    <div class="fill"></div>
+                                </div>
+                            </div>
+                            <div class="c100 p95 small">
+                                <span>95%</span>
+                                <div class="slice">
+                                    <div class="bar"></div>
+                                    <div class="fill"></div>
+                                </div>
+                            </div>
+                            <div class="c100 p59 small">
+                                <span>59%</span>
+                                <div class="slice">
+                                    <div class="bar"></div>
+                                    <div class="fill"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                 </div>
+            </div>
+            <div class="boxb" id="boxb">
+
+                <div class="strategy-card">
+                    <h4>Retirement Strategy</h4>
+                    <div class="strategy-val">
+                       <div class="represent-line">
+                        <p>Employer Contribution</p>
+                        <div class="percentage">
+                            <div id="percentageLine">
+                                <div id="percentageMarker"></div>
+                                
+                            </div>
+                            <p id="percentageDisplay">0%</p>
+                        </div>
+                       </div>
+                       <div class="represent-line">
+                        <p>Retirement Age</p>
+                        <div class="age">
+                            <div id="ageLine">
+                                <div id="ageMarker"></div>
+                            </div>
+                            <p id="ageDisplay">20</p>
+                        </div>
+                       </div>
+                        
+                    </div>
+                    <div class="strategy-det">
+                        <div class="sdet">
+                            <p>Employer Contribution</p>
+                            <span>8.4%</span>
+                        </div>
+                        <div class="sdet">
+                            <p>Interest Rate</p>
+                            <span>5%</span>
+                        </div>
+                    </div>
+                    <Button style="width:100%;" class="btn btn-lg">Update</Button>
+                    <p id="help">View Help Docs ></p>
+                </div>
+                <div class="more">
+                    <p>Are you considering a <strong>Housing Advance?</strong></p>
+                    <p>Limited time reduced interest</p>
+                    <a href="#">Learn More ></a>
+                </div>
+                
+            </div>
+       </div>
+    </div>
+    
+</body>
+</html>
